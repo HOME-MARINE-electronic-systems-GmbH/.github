@@ -1,0 +1,98 @@
+name: 🛠️ Dev Task
+description: Feature, bugfix, refactor, chore, or other development work
+title: "[TYPE] Short description"
+labels: ["status: triage"]
+assignees: []
+
+body:
+  - type: dropdown
+    id: task_type
+    attributes:
+      label: Task Type
+      description: What kind of development work is this?
+      options:
+        - "✨ Feature — new functionality"
+        - "🐛 Bugfix — something is broken"
+        - "♻️ Refactor — restructuring without behaviour change"
+        - "🧹 Chore — tooling, deps, config, CI"
+        - "⚡ Performance — speed or resource improvement"
+        - "🔐 Security — vulnerability or hardening"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be done and why? Be specific enough that anyone on the team can pick this up.
+      placeholder: |
+        Context: ...
+        What: ...
+        Why: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance_criteria
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know this is done? Use a checklist.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+        - [ ] Tests updated / added
+    validations:
+      required: true
+
+  - type: textarea
+    id: technical_notes
+    attributes:
+      label: Technical Notes
+      description: Relevant files, services, prior art, constraints, or pitfalls. Optional but encouraged.
+      placeholder: |
+        - Touches: `src/services/auth.ts`, `api/routes/login.ts`
+        - Depends on: #123
+        - Watch out for: ...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - "🔴 High — blocking or time-sensitive"
+        - "🟡 Medium — important, not urgent"
+        - "🟢 Low — nice to have"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: create_branch
+    attributes:
+      label: Branch Setup
+      description: Check this to automatically create a correctly-named branch for this issue.
+      options:
+        - label: "🌿 Auto-create a branch for this task when the issue is opened"
+
+  - type: dropdown
+    id: base_branch
+    attributes:
+      label: Base Branch
+      description: Which branch should the new branch be created from? (Only relevant if auto-create is checked above.)
+      options:
+        - main
+        - develop
+        - staging
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before Submitting
+      options:
+        - label: I've searched for existing issues and this isn't a duplicate
+          required: true
+        - label: The acceptance criteria are clear enough for someone else to implement this
+          required: false
