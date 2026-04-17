@@ -1,0 +1,110 @@
+name: 💬 Inquiry
+description: An external or internal request that needs evaluation — "can XYZ be done?"
+title: "[INQUIRY] Short description"
+labels: ["type: inquiry", "status: triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for requests that aren't yet clearly defined — questions, feasibility checks, or incoming asks from clients or stakeholders. The goal is to capture enough context to evaluate and convert this into actionable work.
+
+  - type: input
+    id: client_project
+    attributes:
+      label: Client / Project
+      description: Which client or project is this coming from?
+      placeholder: e.g. Acme Corp, Project Phoenix, Internal — Marketing
+    validations:
+      required: false
+
+  - type: input
+    id: contact_person
+    attributes:
+      label: Contact Person
+      description: Who is the primary contact for this request? (Name + how to reach them)
+      placeholder: e.g. Jane Doe — jane@acme.com / Slack @jane
+    validations:
+      required: true
+
+  - type: dropdown
+    id: inquiry_type
+    attributes:
+      label: Inquiry Type
+      description: What best describes this request?
+      options:
+        - "❓ Feasibility — can this be built / done?"
+        - "💰 Estimate — how long / how much would this take?"
+        - "🔍 Research — we need to investigate options"
+        - "📋 Requirement — a request that needs refinement before it becomes a task"
+        - "🔄 Change Request — modification to something already built"
+        - "🤷 Unclear — needs a discovery call first"
+    validations:
+      required: true
+
+  - type: textarea
+    id: request_summary
+    attributes:
+      label: What Was Requested?
+      description: Write the request as it came in — raw is fine. Exact words from the client are even better.
+      placeholder: |
+        "Can we have a dashboard that shows X in real time?"
+        or
+        The client asked if we could integrate their existing Y system with our platform.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context & Background
+      description: Any additional context that helps evaluate this — related features, prior conversations, constraints.
+      placeholder: |
+        - Relates to: #123
+        - Previously discussed in meeting on ...
+        - Constraint: must work with their existing stack (PHP / MySQL)
+    validations:
+      required: false
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: Urgency
+      description: How quickly does this need a response?
+      options:
+        - "🔴 Urgent — client is waiting, needs response ASAP"
+        - "🟡 Normal — within this sprint / week"
+        - "🟢 Low — no deadline, explore when possible"
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Response Deadline
+      description: Is there a specific date by which the client needs an answer?
+      placeholder: e.g. 2025-05-01, end of this week, no deadline
+    validations:
+      required: false
+
+  - type: textarea
+    id: next_step
+    attributes:
+      label: Suggested Next Step
+      description: What do you think should happen with this? Optional, but helpful for triage.
+      placeholder: |
+        - Schedule discovery call with contact
+        - Quick tech spike to check feasibility
+        - Needs product decision before we can estimate
+        - Straightforward — convert directly to feature task
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before Submitting
+      options:
+        - label: I've checked there's no existing issue or task already covering this request
+          required: true
