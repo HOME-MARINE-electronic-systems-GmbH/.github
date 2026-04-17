@@ -1,0 +1,130 @@
+name: 🎨 Design Task
+description: UI/UX design work — new screens, flows, components, or design system updates
+title: "[DESIGN] Short description"
+labels: ["type: design", "status: triage"]
+assignees: []
+
+body:
+  - type: dropdown
+    id: design_type
+    attributes:
+      label: Design Type
+      description: What kind of design work is this?
+      options:
+        - "🖼️ New Screen / Page — designing something from scratch"
+        - "🔄 Redesign — reworking an existing screen or flow"
+        - "🧩 Component — isolated UI component for the design system"
+        - "🗺️ User Flow — mapping out a multi-step interaction"
+        - "🔍 UX Research — discovery, testing, or audit"
+        - "📐 Design System — tokens, guidelines, documentation"
+        - "📦 Assets — icons, illustrations, imagery"
+    validations:
+      required: true
+
+  - type: input
+    id: client_project
+    attributes:
+      label: Client / Project
+      description: Which client or project is this for?
+      placeholder: e.g. Acme Corp, Project Phoenix, Internal — Design System
+    validations:
+      required: false
+
+  - type: input
+    id: contact_person
+    attributes:
+      label: Contact Person
+      description: Who is the primary contact or requester for this work? (Name + how to reach them)
+      placeholder: e.g. Jane Doe — jane@acme.com / Slack @jane
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What needs to be designed and why? Include user goals and business context.
+      placeholder: |
+        User goal: ...
+        Business context: ...
+        What needs to be designed: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope & Deliverables
+      description: What exactly should be delivered? Be specific about screens, states, and formats.
+      placeholder: |
+        - [ ] Mobile + desktop variants
+        - [ ] Empty state, loading state, error state
+        - [ ] Handoff-ready Figma frames
+        - [ ] Annotated specs for dev
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References & Constraints
+      description: Existing designs, brand guidelines, competitor examples, technical constraints, or things to avoid.
+      placeholder: |
+        - Figma file: [link]
+        - Must follow: design system v2 components
+        - Inspiration: ...
+        - Avoid: ...
+        - Technical constraint from dev: ...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options:
+        - "🔴 High — blocking dev or time-sensitive"
+        - "🟡 Medium — important, not urgent"
+        - "🟢 Low — nice to have"
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline
+      description: Is there a hard deadline for this design work?
+      placeholder: e.g. 2025-05-01, before next sprint, no deadline
+    validations:
+      required: false
+
+  - type: textarea
+    id: linked_tasks
+    attributes:
+      label: Linked Dev Tasks
+      description: Are there development issues waiting on this design? Link them here.
+      placeholder: |
+        Blocks: #123, #124
+        Related to: #99
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: handoff
+    attributes:
+      label: Handoff Checklist
+      description: Leave unchecked now — designer checks these off when work is done.
+      options:
+        - label: Figma frames are production-ready and named correctly
+        - label: All states covered (empty, loading, error, edge cases)
+        - label: Specs and annotations added for dev
+        - label: Assets exported and linked
+        - label: Design reviewed / approved by stakeholder
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Before Submitting
+      options:
+        - label: I've checked for existing design issues covering the same scope
+          required: true
